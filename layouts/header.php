@@ -6,9 +6,9 @@
         <div class="col-md-6 ">
             <nav class="navigation">
                 <ul>
-                    <li><a href="">Главная</a></li>
-                    <li><a href="">Товары</a></li>
-                    <li><a href="">Рекламное агенство</a></li>
+                    <li><a href="/">Главная</a></li>
+                    <li><a href="/catalog.php">Товары</a></li>
+                    <li><a href="/ads.php">Рекламное агенство</a></li>
                 </ul>
             </nav>
         </div>
