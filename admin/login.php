@@ -1,5 +1,10 @@
 <?php
     include __DIR__.'/../layouts/head.php'; // подключаем общий head
+    require_once __DIR__.'/../core/AdminModule.php';
+    $admin = new core\AdminModule();
+   // $admin->addNewAdmin('root','123');
+    //$admin->login('root','1232');
+    $admin->postListener();
 ?>
 <div class="container">
     <?php \core\includeHeader(); ?>
@@ -18,7 +23,7 @@
                         <input type="text" class="form-control" name="login" id="login">
                         <label for="password">Пароль:</label>
                         <input type="password" class="form-control" name="password" id="password">
-                        <button class="btn btn-primary">Войти</button>
+                        <input type="submit" name="sendLogin" value="Войти" class="btn btn-primary">
                     </div>
                 </form>
             </div>
