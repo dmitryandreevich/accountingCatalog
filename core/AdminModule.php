@@ -34,6 +34,9 @@ class AdminModule
             $this->login($login, $password);
         }
     }
+    public function isLogined(){
+        return isset($_SESSION['login']);
+    }
     public function login($login, $password){
         if(empty($login) || empty($password))
             die('Логин или пароль не был ввёден!');
@@ -41,10 +44,16 @@ class AdminModule
 
         $result = $this->dbConn->query("SELECT * FROM {$this->tableName} WHERE login='{$login}' and password='{$shaPass}'");
         if(empty($result->num_rows)) {
+
             die('Пользователя с данным именем и паролем не существует!');
         }
         $adminData = $result->fetch_assoc();
-        var_dump($adminData);
+
+        session_start();
+
+        $_SESSION['login'] = $adminData['login'];
+
+        return true;
     }
     public function addNewAdmin($login, $password){
         if(empty($login) || empty($password))

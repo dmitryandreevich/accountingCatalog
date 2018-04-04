@@ -1,10 +1,15 @@
 <?php
-    include __DIR__.'/../layouts/head.php'; // подключаем общий head
+
     require_once __DIR__.'/../core/AdminModule.php';
     $admin = new core\AdminModule();
    // $admin->addNewAdmin('root','123');
     //$admin->login('root','1232');
-    $admin->postListener();
+    if(!$admin->isLogined())
+        $admin->postListener();
+    else
+        echo 'logined!';
+
+    include __DIR__.'/../layouts/head.php'; // подключаем общий head
 ?>
 <div class="container">
     <?php \core\includeHeader(); ?>
