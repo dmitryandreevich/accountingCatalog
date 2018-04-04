@@ -1,3 +1,5 @@
+<?php
+?>
 <header class="header">
     <div class="row justify-content-between align-items-center header-block">
         <div class="col-md-4">
@@ -9,6 +11,7 @@
                     <li><a href="/">Главная</a></li>
                     <li><a href="/catalog.php">Товары</a></li>
                     <li><a href="/ads.php">Рекламное агенство</a></li>
+                    <li><a href="/admin/login.php">Войти</a></li>
                 </ul>
             </nav>
         </div>
