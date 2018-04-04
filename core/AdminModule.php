@@ -66,6 +66,9 @@ class AdminModule
         else
             die('Администратор с таким именем уже существует!');
     }
+    public function redirectToDashboard(){
+
+    }
     private function createTableAdmins(){
         $qResult = $this->dbConn->query('SELECT id FROM admins');
         if(empty($qResult)){

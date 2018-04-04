@@ -1,5 +1,5 @@
 <?php
-
+    session_start();
     require_once __DIR__.'/../core/AdminModule.php';
     $admin = new core\AdminModule();
    // $admin->addNewAdmin('root','123');
@@ -7,7 +7,10 @@
     if(!$admin->isLogined())
         $admin->postListener();
     else
-        echo 'logined!';
+    {
+        header('Location: http://'. $_SERVER['HTTP_HOST'].'/admin/dashboard.php');
+        exit;
+    }
 
     include __DIR__.'/../layouts/head.php'; // подключаем общий head
 ?>
