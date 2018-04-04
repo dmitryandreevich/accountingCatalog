@@ -1,8 +1,7 @@
 <?php
+    require_once __DIR__.'/../core/AccountModule.php';
     if(isset($_POST['logout']))
-    {
-        session_destroy();
-    }
+        \core\AccountModule::logout();
 ?>
 <header class="header">
     <div class="row justify-content-between align-items-center header-block">
@@ -18,8 +17,14 @@
                     <li><a href="/admin/login.php">Админ-панель</a></li>
                     <li>
                         <form action="" method="post">
-                            <input type="submit" value="<?= "Привет, {$_SESSION['login']}. Выйти"?>" class="btn btn-danger" name="logout">
-                        </form></li>
+                            <?php
+                                $isLogined = \core\AccountModule::isLogined();
+                                if($isLogined):
+                            ?>
+                                    <input type="submit" value="<?= "Привет, {$_SESSION['login']}. Выйти"?>" class="btn btn-danger" name="logout">
+                                <?php endif; ?>
+                        </form>
+                    </li>
                 </ul>
             </nav>
         </div>

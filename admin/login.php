@@ -1,15 +1,15 @@
 <?php
     session_start();
-    require_once __DIR__.'/../core/AdminModule.php';
-    $admin = new core\AdminModule();
+    require_once __DIR__ . '/../core/AdminModule.php';
+    require_once  __DIR__. '/../core/AccountModule.php';
+    $account = new core\AccountModule();
    // $admin->addNewAdmin('root','123');
     //$admin->login('root','1232');
-    if(!$admin->isLogined())
-        $admin->postListener();
+    if(!$account->isLogined())
+        $account->postListener();
     else
     {
-        header('Location: http://'. $_SERVER['HTTP_HOST'].'/admin/dashboard.php');
-        exit;
+        core\AdminModule::redirectToDashboard();
     }
 
     include __DIR__.'/../layouts/head.php'; // подключаем общий head

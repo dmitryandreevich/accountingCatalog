@@ -5,7 +5,7 @@ namespace core;
 
 use function Sodium\compare;
 
-class AdminModule
+class AccountModule
 {
     protected $dbConn;
     protected $connectInfo = [
@@ -34,7 +34,7 @@ class AdminModule
             $this->login($login, $password);
         }
     }
-    public function isLogined(){
+    public static function isLogined(){
         return isset($_SESSION['login']);
     }
     public function login($login, $password){
@@ -55,6 +55,12 @@ class AdminModule
 
         return true;
     }
+    public static function logout(){
+
+        header('Location: http://'. $_SERVER['HTTP_HOST'].'/');
+        session_destroy();
+        die();
+    }
     public function addNewAdmin($login, $password){
         if(empty($login) || empty($password))
             die('Логин или пароль не был ввёден!');
@@ -66,11 +72,9 @@ class AdminModule
         else
             die('Администратор с таким именем уже существует!');
     }
-    public function redirectToDashboard(){
 
-    }
     private function createTableAdmins(){
-        $qResult = $this->dbConn->query('SELECT id FROM admins');
+        $qResult = $this->dbConn->query('SELECT id FROM '.$this->tableName);
         if(empty($qResult)){
             $query = "CREATE TABLE admins (
                           id int(11) AUTO_INCREMENT,
