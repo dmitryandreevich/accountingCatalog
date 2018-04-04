@@ -57,9 +57,9 @@ class AccountModule
     }
     public static function logout(){
 
-        header('Location: http://'. $_SERVER['HTTP_HOST'].'/');
+        //header('Location: http://'. $_SERVER['HTTP_HOST'].'/');
         session_destroy();
-        die();
+        //die();
     }
     public function addNewAdmin($login, $password){
         if(empty($login) || empty($password))

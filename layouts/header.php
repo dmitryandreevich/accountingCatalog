@@ -18,8 +18,7 @@
                     <li>
                         <form action="" method="post">
                             <?php
-                                $isLogined = \core\AccountModule::isLogined();
-                                if($isLogined):
+                                if(\core\AccountModule::isLogined()):
                             ?>
                                     <input type="submit" value="<?= "Привет, {$_SESSION['login']}. Выйти"?>" class="btn btn-danger" name="logout">
                                 <?php endif; ?>

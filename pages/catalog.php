@@ -1,13 +1,13 @@
 <?php
-    include __DIR__.'/../layouts/head.php';
     require __DIR__ . '/../core/CatalogModule.php';
+    require_once __DIR__.'/../core/AccountModule.php';
 
     $catalog = new core\CatalogModule();
 
-    if(isset($_POST['new'])) // если была нажата кнопка только для всех товаров
-        $catalog->setProductsQuality('new'); // устанавливаем тип продукта для выборки из базы
-    elseif(isset($_POST['old']))
-        $catalog->setProductsQuality('old');
+
+    $catalog->postListener();
+    include __DIR__.'/../layouts/head.php';
+
 ?>
 <div class="container">
     <?php \core\includeHeader(); ?>
@@ -16,12 +16,15 @@
         <div class="col-md-12">
             <main>
                 <div class="row justify-content-between">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <form action="" method="post">
                             <input type="submit" name="all" class="btn btn-success" value="Все товары">
                             <input type="submit" name="new" class="btn btn-success" value="Новые товары">
                             <input type="submit" name="old" class="btn btn-success" value="Б/У товары">
                         </form>
+                    </div>
+                    <div class="col-md-4 ">
+                        <a href="/admin/new.php" class="btn btn-primary float-right">Добавить новый товар</a>
                     </div>
                 </div>
                 <table class="table">
@@ -29,6 +32,9 @@
                         <th>#</th>
                         <th>Имя</th>
                         <th>Количество</th>
+                        <?php if(\core\AccountModule::isLogined()): ?>
+                         <th>Операции</th>
+                        <?php endif; ?>
                     </tr>
                     <?php
                        $products = $catalog->getProducts();
@@ -38,6 +44,21 @@
                            <td><?= $product['id'] ?></td>
                            <td><?= $product['name'] ?></td>
                            <td><?= $product['count'] ?></td>
+                           <?php if(\core\AccountModule::isLogined()): ?>
+                           <td>
+                               <form action="" method="post">
+                                   <div class="form-group">
+                                       <button type="submit" name="update" value="<?= $product['id'] ?>" class="btn btn-danger">
+                                           <i class="fas fa-wrench"></i>
+                                       </button>
+                                       <button type="submit" name="delete" value="<?= $product['id'] ?>" class="btn btn-danger">
+                                           <i class="fas fa-trash-alt"></i>
+                                       </button>
+                                   </div>
+
+                               </form>
+                           </td>
+                           <?php endif; ?>
                        </tr>
                     <?php endforeach; ?>
                 </table>

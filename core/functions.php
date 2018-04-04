@@ -18,3 +18,6 @@
         require_once __DIR__.'/../core/functions.php';
         include __DIR__.'/../layouts/head.php';
     }
+    function getFontAwesome(){
+        return 'http://'.$_SERVER['HTTP_HOST'].'/css/fontawesome-all.css';
+    }
