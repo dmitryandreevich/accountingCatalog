@@ -1,13 +1,13 @@
 <?php
-    require_once __DIR__.'/../core/CatalogModule.php';
+    require_once __DIR__.'/../core/CatalogModule.php';// подключение файла
     include __DIR__.'/../layouts/head.php';
     $catalog = new core\CatalogModule();
 
     $catalog->postListener();
 ?>
-
+<?php \core\includeHeader(); ?>
+<!-- Админская страница для добавления нового товара -->
 <div class="container">
-    <?php \core\includeHeader(); ?>
 
     <main>
         <div class="row">
@@ -37,10 +37,5 @@
             </div>
         </div>
     </main>
-
-    <?php \core\includeFooter(); ?>
-
-
-
-
 </div>
+<?php \core\includeFooter(); ?>

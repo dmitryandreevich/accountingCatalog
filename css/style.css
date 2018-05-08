@@ -1,15 +1,16 @@
 body{
     background-color: rgba(198, 198, 198, 0.23);
+    font-family: Tahoma, Arial;
+}
+header, footer{
+    color: white;
 }
 header{
-min-height: 150px;
+    min-height: 75px;
+    background-color: rgba(67, 81, 115);
 }
 .header-block{
-    padding-top: 40px;
-}
-nav{
-}
-nav ul{
+    padding-top: 20px;
 }
 nav li{
     list-style: none;
@@ -18,9 +19,8 @@ nav li{
 
 }
 nav a{
-    color: black;
+    color: white;
     transition: color 0.2s ease-in;
-    text-transform: uppercase;
 }
 nav a:hover{
     color: #a0ce46;
@@ -34,4 +34,11 @@ main{
 footer{
     min-height: 150px;
     background-color: #2b2f35;
+}
+.remont{
+    font-size: 24px;
+    font-weight: bold;
+}
+.address{
+    font-weight: bold;
 }

@@ -9,8 +9,9 @@
     include __DIR__.'/../layouts/head.php';
 
 ?>
+<?php \core\includeHeader(); ?>
+
 <div class="container">
-    <?php \core\includeHeader(); ?>
 
     <div class="row">
         <div class="col-md-12">
@@ -24,7 +25,9 @@
                         </form>
                     </div>
                     <div class="col-md-4 ">
+                        <?php if(\core\AccountModule::isLogined()): ?>
                         <a href="/admin/new.php" class="btn btn-primary float-right">Добавить новый товар</a>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <table class="table">
@@ -66,6 +69,5 @@
             </main>
         </div>
     </div>
-
-    <?php \core\includeFooter(); ?>
 </div>
+<?php \core\includeFooter(); ?>

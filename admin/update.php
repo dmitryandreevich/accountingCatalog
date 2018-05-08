@@ -1,14 +1,15 @@
 <?php
-    require_once __DIR__.'/../core/CatalogModule.php';
-    include __DIR__.'/../layouts/head.php';
-    $catalog = new core\CatalogModule();
+    require_once __DIR__.'/../core/CatalogModule.php'; // подключение файла
+    include __DIR__.'/../layouts/head.php'; // вставка head
+    $catalog = new core\CatalogModule(); // создание объекта класса CatalogModule
 
-    $catalog->postListener();
+    $catalog->postListener(); // прослушка пост запросов
+
+    \core\includeHeader(); // вставка шапки
 ?>
-
+<!-- Админская страница для редактирования продукта -->
 <div class="container">
     <?php
-        \core\includeHeader();
         $product = $catalog->getProductById($_GET['id']);
         if(empty($product))
             die('Ошибка при получении продукта!');
@@ -44,10 +45,5 @@
             </div>
         </div>
     </main>
-
-    <?php \core\includeFooter(); ?>
-
-
-
-
 </div>
+<?php \core\includeFooter(); ?>
